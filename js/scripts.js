@@ -2,13 +2,15 @@ $(document).ready(function(){
 
 $('#nextButton').click(function(){
 //this.parentNode.parentNode.css('background','yellow'));
-$('.card').css('background','yellow');
-alert(getNextQuestion('question5'));
+//$('#questionCard').css('background','yellow');
+$('#questionCard .card-header').text(getNextQuestion($('#questionCard .card-header').text()));
+
 
 });
 $('#previousButton').click(function(){
-  $('.card').css('background','blue');
-  alert(getPreviousQuestion('question1'));
+  //alert($('#questionCard .card-header').text());
+  $('#questionCard .card-header').text(getPreviousQuestion($('#questionCard .card-header').text()));
+  
   });
 
 
@@ -47,6 +49,10 @@ function getPreviousQuestion(currentQuestion) {
       if(i === 0)
       {
         nextQuestion = questions[questions.length - 1];
+      }
+      else
+      {
+        nextQuestion = questions[i-1];
       }
       
     }
