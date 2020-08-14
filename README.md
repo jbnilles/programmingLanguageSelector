@@ -1,12 +1,12 @@
-# _Portfolio Landing Page_
+# _Program language selector_
 
-#### _A html page for my portfolio, 8/7/20_
+#### _A webpage for selecting a programming language to learn, 8/14/20_
 
 #### By _**Joseph Nilles**_
 
 ## Description
 
-_This is a landing page for my portfolio. It was created using HTML, CSS and the CSS framework Boostrap. This pages lists some projects that I have completed and links to their repository on github._
+_This is a program to help new programmers select a programming language for them to learn. The webpage has the user take a short quiz and then it will suggest a language for them to learn._
 
 ## Setup/Installation Requirements
 
@@ -17,11 +17,11 @@ _This is a landing page for my portfolio. It was created using HTML, CSS and the
 
 ## Github Pages Link
 
-https://jbnilles.github.io/portfolio-landing/ 
+https://jbnilles.github.io/programmingLanguageSelector/ 
 
 ## Technologies Used
 
-_HTML, CSS, and Bootstrap Framework were used in this project_
+_HTML, CSS, JavaScript, jQuery and Bootstrap Framework were used in this project_
 
 ### License
 
