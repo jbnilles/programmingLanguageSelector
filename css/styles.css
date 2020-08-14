@@ -14,13 +14,16 @@
   background-color: #EEE2DC;
   display: none;
 }
+#introCard{
+  background-color: #EEE2DC;
+}
 body{
   background-color: #EDC7B7;
 }
 .container{
   background-color: #AC3B61;
   padding-top: 25px;
-  padding-bottom: 10px;
+  padding-bottom: 25px;
 }
 .jumbotron{
   background-color: #EEE2DC;

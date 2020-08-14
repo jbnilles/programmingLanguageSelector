@@ -89,6 +89,7 @@ $('#submitButton').click(function(){
     $('#cCard').hide();
     $('#jsCard').hide();
     $('#javaCard').hide();
+    $('#introCard').hide();
     ANSWERS = [0,0,0,0,0];
     $('#questionCard .card-title').text(QUESTIONS[0]);
     $('#questionCard .card-header').text("Question 1");
