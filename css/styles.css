@@ -18,7 +18,7 @@
   background-color: #EEE2DC;
 }
 body{
-  background-color: #EDC7B7;
+  background-color:#EEE2DC;
 }
 .container{
   background-color: #AC3B61;
@@ -28,7 +28,6 @@ body{
 .jumbotron{
   background-color: #EEE2DC;
   color: #123C69;
-  
 }
 #previousButton{
   display: none;
