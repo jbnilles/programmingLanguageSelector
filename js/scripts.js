@@ -25,7 +25,7 @@ $('#nextButton').click(function(){
   //   $('input[type="radio"][name="questionRadio"]:checked').prop("checked",false);
 
   // }
-
+  checkIfButtonsNeeded(nextQuestion);
 
   $('#questionCard').show();
 });
@@ -54,6 +54,8 @@ $('#previousButton').click(function(){
   //   $('input[type="radio"][name="questionRadio"]:checked').prop("checked",false);
 
   // }
+
+  checkIfButtonsNeeded(previousQuestion);
   $('#questionCard').show();
   });
 
@@ -79,6 +81,7 @@ $('#submitButton').click(function(){
    $('#questionCard .card-title').text(QUESTIONS[unanswered - 1]);
    $('#questionCard .card-header').text("Question " + (unanswered));
    setRadioButton(unanswered - 1);
+   checkIfButtonsNeeded(unanswered -1);
    //$('#questionCard .card-title').text(QUESTIONS[getPreviousQuestion($('#questionCard .card-title').text())]);
   }
   });
@@ -91,6 +94,7 @@ $('#submitButton').click(function(){
     $('#questionCard .card-header').text("Question 1");
     $('input[type="radio"][name="questionRadio"]:checked').prop("checked",false);
     $(this).text("Restart Quiz");
+    checkIfButtonsNeeded(0);
     $('#questionCard').show();
   });
   
@@ -225,4 +229,25 @@ function writeToANSWERS(currentQuestion) {
     
   }
 }
+  function checkIfButtonsNeeded(question) {
+    if(question === 0)
+    {
+      $("#previousButton").hide();
+      $("#nextButton").show();
+
+    }
+    else if(question === 4)
+    {
+      $("#previousButton").show();
+      $("#nextButton").hide();
+    }
+    else
+    {
+      $("#previousButton").show();
+      $("#nextButton").show();
+    }
+    return;
+    
+  }
+
 

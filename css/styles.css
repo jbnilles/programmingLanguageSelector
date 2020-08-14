@@ -27,3 +27,9 @@ body{
   color: #123C69;
   
 }
+#previousButton{
+  display: none;
+}
+#buttonRow{
+  padding-top: 5px;
+}

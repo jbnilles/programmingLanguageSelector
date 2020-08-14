@@ -14,7 +14,6 @@
     <div class="jumbotron">
       <h1 class="display-4">The Programming Language Selector Quiz</h1>
       <p class="lead">This is a simple quiz to help you decide what programming language to learn.</p>
-      
       <button type="button" class="btn btn-outline-primary" id="restartButton">Start Quiz</button>
     </div>
     <div class="card" id="questionCard">
@@ -23,38 +22,40 @@
         <h4 class="card-title">hi</h4>
         <div class="row">
           <div class="col-12">
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="questionRadio" id="option1" value="1">
-            <label class="form-check-label" for="option1">Never</label>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="questionRadio" id="option1" value="1">
+              <label class="form-check-label" for="option1">Never</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="questionRadio" id="option2" value="2">
+              <label class="form-check-label" for="option2">Not Likely</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="questionRadio" id="option3" value="3">
+              <label class="form-check-label" for="option3">Unsure</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="questionRadio" id="option4" value="4">
+              <label class="form-check-label" for="option4">Likely</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="questionRadio" id="option5" value="5">
+              <label class="form-check-label" for="option5">Always</label>
+            </div>
+          </div> 
+        </div>
+        <div class="row" id="buttonRow">
+          <div class="col-4">
+          <button type="button" class="btn btn-outline-primary" id="previousButton">Previous</button>
           </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="questionRadio" id="option2" value="2">
-            <label class="form-check-label" for="option2">Not Likely</label>
+          <div class="col-4 d-flex justify-content-center">
+          <button type="submit" class="btn btn-outline-primary" id="submitButton">Submit</button>
+
           </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="questionRadio" id="option3" value="3">
-            <label class="form-check-label" for="option3">Unsure</label>
+          <div class="col-4">
+            <button type="button" class="btn btn-outline-primary float-right" id="nextButton">Next</button>
           </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="questionRadio" id="option4" value="4">
-            <label class="form-check-label" for="option4">Likely</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="questionRadio" id="option5" value="5">
-            <label class="form-check-label" for="option5">Always</label>
-          </div>
-        </div> 
-      </div>
-       <div class="row">
-         <div class="col-12">
-        <button type="button" class="btn btn-outline-primary" id="previousButton">Previous</button>
-        
-        <button type="submit" class="btn btn-outline-secondary" id="submitButton">Submit</button>
-        
-        
-        <button type="button" class="btn btn-outline-secondary float-right" id="nextButton">Next</button>
-      </div>
-      </div>
+        </div>
       </div>
     </div>
     <div class="card" id="jsCard">
@@ -68,7 +69,6 @@
           <li><a href="https://www.w3schools.com/js/default.asp">w3schools</a> is a good reference site that explains various JS elements.</li>
           <li><a href="https://javascript.info/">javascript.info</a> has a tutorial showing how to do various tasks in JS.</li>
         </ul>
-
       </div>
     </div>
     <div class="card" id="cCard">
@@ -82,7 +82,6 @@
           <li><a href="https://www.programiz.com/c-programming">Programiz</a> is a good reference site that explains various c elements.</li>
           <li><a href="https://www.tutorialspoint.com/cprogramming/index.htm">tutorialspoint</a> has both tutorials as well as lots of reference information.</li>
         </ul>
-
       </div>
     </div>
     <div class="card" id="javaCard">
@@ -98,17 +97,6 @@
         </ul>
       </div>
     </div>
-    
-
-
-
-
-
-
   </div>
-
-
-
-
 </body>
 </html>
