@@ -44,10 +44,7 @@ $('#previousButton').click(function(){
   }
   else
   {
-    if(checkAllQuestionsAnswered())
-    {
-
-    }
+    
     $('input[type="radio"][name="questionRadio"]:checked').prop("checked",false);
 
   }
@@ -74,11 +71,19 @@ $('#submitButton').click(function(){
   else
   {
    let unanswered =  getUnansweredQuestion();
-   //alert("Question: " + unanswered + " needs to be answered.")
+   alert("Question: " + unanswered + " needs to be answered.")
    //$('#questionCard .card-header').text(QUESTIONS[getPreviousQuestion($('#questionCard .card-header').text())]);
   }
   });
-
+  $('#restartButton').click(function(){
+    $('#cCard').hide();
+    $('#jsCard').hide();
+    $('#javaCard').hide();
+    ANSWERS = [0,0,0,0,0];
+    $('#questionCard .card-header').text(QUESTIONS[0]);
+    $('input[type="radio"][name="questionRadio"]:checked').prop("checked",false);
+    $('#questionCard').fadeIn();
+  });
 
 });
 
