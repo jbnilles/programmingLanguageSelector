@@ -1,9 +1,29 @@
 #javaCard{
+  background-color: #EEE2DC;
   display: none;
 }
 #cCard{
+  background-color: #EEE2DC;
   display: none;
 }
 #jsCard{
+  background-color: #EEE2DC;
   display: none;
+}
+#questionCard{
+  background-color: #EEE2DC;
+  display: none;
+}
+body{
+  background-color: #EDC7B7;
+}
+.container{
+  background-color: #AC3B61;
+  padding-top: 25px;
+  padding-bottom: 10px;
+}
+.jumbotron{
+  background-color: #EEE2DC;
+  color: #123C69;
+  
 }

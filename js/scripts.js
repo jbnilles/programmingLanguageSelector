@@ -2,66 +2,70 @@ $(document).ready(function(){
 
 $('#nextButton').click(function(){
   $('#questionCard').hide();
-let currentQuestion = getCurrentQuestion($('#questionCard .card-header').text());
-let nextQuestion = getNextQuestion($('#questionCard .card-header').text());
-$('#questionCard .card-header').text(QUESTIONS[nextQuestion]);
-if(!isNaN(parseInt($('input[type="radio"][name="questionRadio"]:checked').val()))){
-  ANSWERS[currentQuestion ] = parseInt($('input[type="radio"][name="questionRadio"]:checked').val());
+  let currentQuestion = getCurrentQuestion($('#questionCard .card-title').text());
+  let nextQuestion = getNextQuestion($('#questionCard .card-title').text());
   
-}
+  $('#questionCard .card-title').text(QUESTIONS[nextQuestion]);
+  $('#questionCard .card-header').text("Question " + (nextQuestion + 1));
+  writeToANSWERS(currentQuestion);
+  // if(!isNaN(parseInt($('input[type="radio"][name="questionRadio"]:checked').val()))){
+  //   ANSWERS[currentQuestion ] = parseInt($('input[type="radio"][name="questionRadio"]:checked').val());
+  
+  // }
+  setRadioButton(nextQuestion)
   //ANSWERS[currentQuestion ] = parseInt($('input[type="radio"][name="questionRadio"]:checked').val());
-  $('#questionCard #option'+ ANSWERS[nextQuestion]).prop("checked",true);
-  if(ANSWERS[nextQuestion])
-  {
-    $('#questionCard #option'+ ANSWERS[nextQuestion]).prop("checked",true);
+  //$('#questionCard #option'+ ANSWERS[nextQuestion]).prop("checked",true);
+  // if(ANSWERS[nextQuestion])
+  // {
+  //   $('#questionCard #option'+ ANSWERS[nextQuestion]).prop("checked",true);
 
-  }
-  else
-  {
-    $('input[type="radio"][name="questionRadio"]:checked').prop("checked",false);
+  // }
+  // else
+  // {
+  //   $('input[type="radio"][name="questionRadio"]:checked').prop("checked",false);
 
-  }
+  // }
 
 
-  $('#questionCard').fadeIn();
+  $('#questionCard').show();
 });
 
 
 $('#previousButton').click(function(){
   $('#questionCard').hide();
-  let currentQuestion = getCurrentQuestion($('#questionCard .card-header').text());
-  let previousQuestion = getPreviousQuestion($('#questionCard .card-header').text());
-  $('#questionCard .card-header').text(QUESTIONS[previousQuestion]);
-  
-  if(!isNaN(parseInt($('input[type="radio"][name="questionRadio"]:checked').val()))){
-    ANSWERS[currentQuestion ] = parseInt($('input[type="radio"][name="questionRadio"]:checked').val());
+  let currentQuestion = getCurrentQuestion($('#questionCard .card-title').text());
+  let previousQuestion = getPreviousQuestion($('#questionCard .card-title').text());
+  $('#questionCard .card-title').text(QUESTIONS[previousQuestion]);
+  $('#questionCard .card-header').text("Question " + (previousQuestion + 1));
+  writeToANSWERS(currentQuestion);
+  // if(!isNaN(parseInt($('input[type="radio"][name="questionRadio"]:checked').val()))){
+  //   ANSWERS[currentQuestion ] = parseInt($('input[type="radio"][name="questionRadio"]:checked').val());
     
-  }//ANSWERS[currentQuestion ] = parseInt($('input[type="radio"][name="questionRadio"]:checked').val());
-  if(ANSWERS[previousQuestion])
-  {
-    $('#questionCard #option'+ ANSWERS[previousQuestion]).prop("checked",true);
+  // }//ANSWERS[currentQuestion ] = parseInt($('input[type="radio"][name="questionRadio"]:checked').val());
+  setRadioButton(previousQuestion)
+  // if(ANSWERS[previousQuestion])
+  // {
+  //   $('#questionCard #option'+ ANSWERS[previousQuestion]).prop("checked",true);
 
-  }
-  else
-  {
+  // }
+  // else
+  // {
     
-    $('input[type="radio"][name="questionRadio"]:checked').prop("checked",false);
+  //   $('input[type="radio"][name="questionRadio"]:checked').prop("checked",false);
 
-  }
-  $('#questionCard').fadeIn();
+  // }
+  $('#questionCard').show();
   });
 
 
 
 $('#submitButton').click(function(){
-  //$('#questionCard .card-header').text(QUESTIONS[getPreviousQuestion($('#questionCard .card-header').text())]);
+  //$('#questionCard .card-title').text(QUESTIONS[getPreviousQuestion($('#questionCard .card-title').text())]);
   
-  let currentQuestion = getCurrentQuestion($('#questionCard .card-header').text());
+  let currentQuestion = getCurrentQuestion($('#questionCard .card-title').text());
   //alert(parseInt($('input[type="radio"][name="questionRadio"]:checked').val()));
-  if(!isNaN(parseInt($('input[type="radio"][name="questionRadio"]:checked').val()))){
-    ANSWERS[currentQuestion ] = parseInt($('input[type="radio"][name="questionRadio"]:checked').val());
-    
-  }
+  // 
+  writeToANSWERS(currentQuestion);
   //alert(ANSWERS);
   if(checkAllQuestionsAnswered())
   {
@@ -71,8 +75,11 @@ $('#submitButton').click(function(){
   else
   {
    let unanswered =  getUnansweredQuestion();
-   alert("Question: " + unanswered + " needs to be answered.")
-   //$('#questionCard .card-header').text(QUESTIONS[getPreviousQuestion($('#questionCard .card-header').text())]);
+   alert("Need an answer for question"+ unanswered+": "+  QUESTIONS[unanswered - 1] );
+   $('#questionCard .card-title').text(QUESTIONS[unanswered - 1]);
+   $('#questionCard .card-header').text("Question " + (unanswered));
+   setRadioButton(unanswered - 1);
+   //$('#questionCard .card-title').text(QUESTIONS[getPreviousQuestion($('#questionCard .card-title').text())]);
   }
   });
   $('#restartButton').click(function(){
@@ -80,14 +87,17 @@ $('#submitButton').click(function(){
     $('#jsCard').hide();
     $('#javaCard').hide();
     ANSWERS = [0,0,0,0,0];
-    $('#questionCard .card-header').text(QUESTIONS[0]);
+    $('#questionCard .card-title').text(QUESTIONS[0]);
+    $('#questionCard .card-header').text("Question 1");
     $('input[type="radio"][name="questionRadio"]:checked').prop("checked",false);
-    $('#questionCard').fadeIn();
+    $(this).text("Restart Quiz");
+    $('#questionCard').show();
   });
+  
 
 });
 
-const QUESTIONS = ["question1","question2","question3","question4","question5"];
+const QUESTIONS = ["Do you prefer to work with websites?","Do you want to avoid working with directly with machine language?","Do you prefer to work with api's?","Does design intrest you?","Do you prefer to work with a live editor(console)?"];
 let ANSWERS =[0,0,0,0,0];
 
 function getNextQuestion(currentQuestion) {
@@ -195,6 +205,24 @@ function decideResult(answersValue) {
   {
     $("#jsCard").show();
     //alert("option3");
+  }
+}
+function setRadioButton(question) {
+  if(ANSWERS[question])
+  {
+    $('#questionCard #option'+ ANSWERS[question]).prop("checked",true);
+
+  }
+  else
+  {
+    $('input[type="radio"][name="questionRadio"]:checked').prop("checked",false);
+
+  }
+}
+function writeToANSWERS(currentQuestion) {
+  if(!isNaN(parseInt($('input[type="radio"][name="questionRadio"]:checked').val()))){
+    ANSWERS[currentQuestion ] = parseInt($('input[type="radio"][name="questionRadio"]:checked').val());
+    
   }
 }
 
