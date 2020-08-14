@@ -65,7 +65,7 @@ $('#submitButton').click(function(){
     ANSWERS[currentQuestion ] = parseInt($('input[type="radio"][name="questionRadio"]:checked').val());
     
   }
-  alert(ANSWERS);
+  //alert(ANSWERS);
   if(checkAllQuestionsAnswered())
   {
     $('#questionCard').hide();
@@ -74,7 +74,7 @@ $('#submitButton').click(function(){
   else
   {
    let unanswered =  getUnansweredQuestion();
-   alert("Question: " + unanswered + " needs to be answered.")
+   //alert("Question: " + unanswered + " needs to be answered.")
    //$('#questionCard .card-header').text(QUESTIONS[getPreviousQuestion($('#questionCard .card-header').text())]);
   }
   });
@@ -167,24 +167,29 @@ function getUnansweredQuestion() {
 function addAnswers() {
   let i = 0;
   let j = 0;
+  //alert(ANSWERS.length + "answerlength");
   for (i = 0; i < ANSWERS.length; i++)
   {
-    j = j + i;
+    j = j + ANSWERS[i];
   }
   return j;
 }
 function decideResult(answersValue) {
+  //alert(answersValue);
   if(answersValue <= 8)
   {
-    alert("option1");
+    $("#cCard").show();
+    //alert("option1");
   }
   else if(answersValue > 8 && answersValue <= 16)
   {
-    alert("option2");
+    $("#javaCard").show();
+    //alert("option2");
   }
   else
   {
-    alert("option3");
+    $("#jsCard").show();
+    //alert("option3");
   }
 }
 
