@@ -3,33 +3,34 @@ $(document).ready(function (){
 
   $('#nextButton').click(function (){
     $('#questionCard').hide();
-    let currentQuestion = getCurrentQuestion($('#questionCard .card-title').text());
-    let nextQuestion = getNextQuestion($('#questionCard .card-title').text());
-    writeToCard(nextQuestion);
-    writeToANSWERS(currentQuestion);
-    setRadioButton(nextQuestion)
-    checkIfButtonsNeeded(nextQuestion);
+    let currentQuestionIndex = getcurrentQuestionIndex($('#questionCard .card-title').text());
+    let nextQuestionIndex = getnextQuestionIndex($('#questionCard .card-title').text());
+    writeToCard(nextQuestionIndex);
+    writeToANSWERS(currentQuestionIndex);
+    setRadioButton(nextQuestionIndex)
+    checkIfButtonsNeeded(nextQuestionIndex);
     $('#questionCard').show();
   });
 
 
 $('#previousButton').click(function (){
   $('#questionCard').hide();
-  let currentQuestion = getCurrentQuestion($('#questionCard .card-title').text());
-  let previousQuestion = getPreviousQuestion($('#questionCard .card-title').text());
-  writeToCard(previousQuestion);
-  writeToANSWERS(currentQuestion);
-  setRadioButton(previousQuestion)
-  checkIfButtonsNeeded(previousQuestion);
+  let currentQuestionIndex = getcurrentQuestionIndex($('#questionCard .card-title').text());
+  let previousQuestionIndex = getpreviousQuestionIndex($('#questionCard .card-title').text());
+  writeToCard(previousQuestionIndex);
+  writeToANSWERS(currentQuestionIndex);
+  setRadioButton(previousQuestionIndex)
+  checkIfButtonsNeeded(previousQuestionIndex);
   $('#questionCard').show();
   });
 
 
 $('#submitButton').click(function (){
-  let currentQuestion = getCurrentQuestion($('#questionCard .card-title').text());
-  writeToANSWERS(currentQuestion);
+  let currentQuestionIndex = getcurrentQuestionIndex($('#questionCard .card-title').text());
+  writeToANSWERS(currentQuestionIndex);
   $('#questionCard').hide();
   if(checkAllQuestionsAnswered()) {
+    $('#questionCard').hide();
     showResult(addAnswers()); 
   } else {
    let unanswered =  getUnansweredQuestion();
@@ -37,8 +38,9 @@ $('#submitButton').click(function (){
    writeToCard(unanswered - 1);
    setRadioButton(unanswered - 1);
    checkIfButtonsNeeded(unanswered -1);
+   $('#questionCard').show();
   }
-  $('#questionCard').show();
+  
   });
 
   $('#restartButton').click(function (){
@@ -60,11 +62,11 @@ $('#submitButton').click(function (){
 const QUESTIONS = ["Do you prefer to work with websites?", "Do you want to avoid working with directly with machine language?", "Do you prefer to work with api's?", "Does design intrest you?", "Do you prefer to work with a live editor(console)?"];
 let ANSWERS = [0, 0, 0, 0, 0];
 
-function getNextQuestion (currentQuestion) {
+function getnextQuestionIndex (currentQuestionIndex) {
   let i = 0;
   for ( i = 0; i < QUESTIONS.length; i++)
   {
-    if (QUESTIONS[i] === currentQuestion) {
+    if (QUESTIONS[i] === currentQuestionIndex) {
       if (i === QUESTIONS.length - 1 ) {
         return 0;
       } else {
@@ -72,14 +74,14 @@ function getNextQuestion (currentQuestion) {
       }
     }
   }
-  return nextQuestion;
+  return nextQuestionIndex;
 }
 
-function getPreviousQuestion (currentQuestion) {
+function getpreviousQuestionIndex (currentQuestionIndex) {
   let i = 0;
   for ( i = 0; i < QUESTIONS.length; i++)
   {
-    if (QUESTIONS[i] === currentQuestion) {
+    if (QUESTIONS[i] === currentQuestionIndex) {
       if (i === 0) {
         return QUESTIONS.length - 1;
       } else {
@@ -87,14 +89,14 @@ function getPreviousQuestion (currentQuestion) {
       }
     }
   }
-  return nextQuestion;
+  return nextQuestionIndex;
 }
 
-function getCurrentQuestion (currentQuestion) {
+function getcurrentQuestionIndex (currentQuestionIndex) {
   let i = 0;
   for (i = 0; i < QUESTIONS.length; i++)
   {
-    if (QUESTIONS[i] === currentQuestion) {
+    if (QUESTIONS[i] === currentQuestionIndex) {
       return i;
     }
   }
@@ -134,6 +136,7 @@ function addAnswers () {
 }
 
 function showResult (answersValue) {
+
   if (answersValue <= 10) {
     $("#cCard").show();
   } else if (answersValue > 10 && answersValue <= 19) {
@@ -153,9 +156,9 @@ function setRadioButton (question) {
   return;
 }
 
-function writeToANSWERS (currentQuestion) {
+function writeToANSWERS (currentQuestionIndex) {
   if (!isNaN(parseInt($('input[type="radio"][name="questionRadio"]:checked').val()))) {
-    ANSWERS[currentQuestion ] = parseInt($('input[type="radio"][name="questionRadio"]:checked').val());
+    ANSWERS[currentQuestionIndex ] = parseInt($('input[type="radio"][name="questionRadio"]:checked').val());
   }
   return;
 }
