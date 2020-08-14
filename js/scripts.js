@@ -33,7 +33,7 @@ $('#submitButton').click(function (){
     $('#questionCard').hide();
     showResult(addAnswers()); 
   } else {
-   let unanswered =  getUnansweredQuestion();
+   let unanswered =  getUnansweredQuestionIndex();
    alert("Need an answer for question" + unanswered + ": " + QUESTIONS[unanswered - 1] );
    writeToCard(unanswered - 1);
    setRadioButton(unanswered - 1);
@@ -114,7 +114,7 @@ function checkAllQuestionsAnswered () {
   return true;
 }
 
-function getUnansweredQuestion () {
+function getUnansweredQuestionIndex () {
   let i =0;
   for (i = 0; i <ANSWERS.length; i++)
   {
