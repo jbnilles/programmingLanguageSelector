@@ -1,30 +1,50 @@
 $(document).ready(function(){
 
 $('#nextButton').click(function(){
-//this.parentNode.parentNode.css('background','yellow'));
-//$('#questionCard').css('background','yellow');
+  $('#questionCard').hide();
 let currentQuestion = getCurrentQuestion($('#questionCard .card-header').text());
 let nextQuestion = getNextQuestion($('#questionCard .card-header').text());
-//$('#questionCard .card-header').text(QUESTIONS[getNextQuestion($('#questionCard .card-header').text())]);
 $('#questionCard .card-header').text(QUESTIONS[nextQuestion]);
   ANSWERS[currentQuestion ] = parseInt($('input[type="radio"][name="questionRadio"]:checked').val());
-alert(ANSWERS);
+  $('#questionCard #option'+ ANSWERS[nextQuestion]).prop("checked",true);
+  if(ANSWERS[nextQuestion])
+  {
+    $('#questionCard #option'+ ANSWERS[nextQuestion]).prop("checked",true);
 
+  }
+  else
+  {
+    $('input[type="radio"][name="questionRadio"]:checked').prop("checked",false);
+
+  }
+
+
+  $('#questionCard').fadeIn();
 });
+
+
 $('#previousButton').click(function(){
-  //alert($('#questionCard .card-header').text());
+  $('#questionCard').hide();
   let currentQuestion = getCurrentQuestion($('#questionCard .card-header').text());
   let previousQuestion = getPreviousQuestion($('#questionCard .card-header').text());
-  //alert(question);
   $('#questionCard .card-header').text(QUESTIONS[previousQuestion]);
   ANSWERS[currentQuestion ] = parseInt($('input[type="radio"][name="questionRadio"]:checked').val());
-  alert(ANSWERS);
+  if(ANSWERS[previousQuestion])
+  {
+    $('#questionCard #option'+ ANSWERS[previousQuestion]).prop("checked",true);
+
+  }
+  else
+  {
+    $('input[type="radio"][name="questionRadio"]:checked').prop("checked",false);
+
+  }
+  $('#questionCard').fadeIn();
   });
 
 
 
 $('#submitButton').click(function(){
-  //alert($('#questionCard .card-header').text());
   $('#questionCard .card-header').text(QUESTIONS[getPreviousQuestion($('#questionCard .card-header').text())]);
   
   });
